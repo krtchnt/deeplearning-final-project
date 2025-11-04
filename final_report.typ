@@ -170,5 +170,4 @@ Single-member team. _Kritchanat Thanapiphatsiri_ handled requirement analysis,
 dataset curation, model integration, prompt engineering, evaluation, and
 documentation (100% workload).
 
-== Bibliography
 #bibliography("final_report.bib")
