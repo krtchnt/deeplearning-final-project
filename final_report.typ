@@ -44,10 +44,10 @@ systems offer.
 == Related Work
 - `Storytelling LLMs` — Works such as STORYBOARD and InstructBLIP variants
   employ transformers to guide narrative creation, highlighting the importance
-  of instruction tuning for controllable prose.
+  of instruction tuning for controllable prose @holtzman2020curious.
 - `Structured decoding` — JSON schema forcing with constrained decoding has been
   demonstrated in OpenAI and LMQL tooling; our project adapts this idea to
-  interactive fiction.
+  interactive fiction @openai2023structured.
 - `Romance chatbots` — Prior systems (e.g., Replika) rely on proprietary
   fine-tuning but seldom expose typed outputs, limiting composability.
 
@@ -61,8 +61,9 @@ a prompt.
 
 == Model Architecture
 The base model is Qwen2.5-1.5B-Instruct, a 1.5B-parameter decoder-only
-transformer with rotary positional embeddings and RMSNorm. We quantize it to
-4-bit `nf4` weights via bitsandbytes to run efficiently on consumer GPUs.
+transformer with rotary positional embeddings and RMSNorm @bai2024qwen. We
+quantize it to 4-bit `nf4` weights via bitsandbytes to run efficiently on
+consumer GPUs.
 
 #figure(caption: [Model architecture overview], [
   #let stage(label) = block(
@@ -116,7 +117,8 @@ quantisation-aware loading in Colab to fit the model on a single T4. Instead of
 full fine-tuning, we performed prompt-level alignment by iterating over curated
 conversation snippets, analysing failure cases, and adjusting safety rules,
 repetition penalty, and sampling temperature. This process constituted our model
-adaptation loop:
+adaptation loop and mitigated degeneration phenomena highlighted in prior
+autoregressive decoding studies @holtzman2020curious:
 
 1. Run inference on development threads with temperature 0.6.
 2. Manually inspect outputs, logging schema violations or tonal drift.
@@ -168,8 +170,5 @@ Single-member team. _Kritchanat Thanapiphatsiri_ handled requirement analysis,
 dataset curation, model integration, prompt engineering, evaluation, and
 documentation (100% workload).
 
-== References
-1. Bai, Y., et al. *Qwen2.5 Technical Report*, Alibaba Group, 2024.
-2. Holtzman, A., et al. "The Curious Case of Neural Text Degeneration."
-  *ICLR*, 2020.
-3. OpenAI. "Structured JSON Output from Language Models." Technical blog, 2023.
+== Bibliography
+#bibliography("final_report.bib")
