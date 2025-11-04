@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
   # https://devenv.sh/basics/
@@ -6,7 +12,14 @@
 
   # https://devenv.sh/packages/
   # packages = [ pkgs.git ];
-  packages = let inherit (pkgs) codespell ruff; in [ codespell ruff ];
+  packages =
+    let
+      inherit (pkgs) codespell ruff;
+    in
+    [
+      codespell
+      ruff
+    ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
