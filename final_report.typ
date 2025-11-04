@@ -96,15 +96,15 @@ The Python implementation lives entirely in `main.py`. Key components include:
 
 - `Event` domain classes that encapsulate narration, speech, and imagination
   with unique `CharacterId`s to preserve identity across events.
-- `EventJSON` (`main.py:48`) defined in Pydantic v2, exposing a `json_schema`
+- `EventJSON` (`main.py:107`) defined in Pydantic v2, exposing a `json_schema`
   method for the formatter enforcer and `validate_json_str` helper for resilient
   parsing.
-- Model setup (`main.py:74`) loads the quantized Qwen checkpoint with
+- Model setup (`main.py:135`) loads the quantized Qwen checkpoint with
   bitsandbytes and builds a Hugging Face text-generation pipeline.
-- `predict_one` (`main.py:115`) linearises the recent thread, appends schema
+- `predict_one` (`main.py:196`) linearises the recent thread, appends schema
   definitions, and performs constrained sampling using
   `prefix_allowed_tokens_fn`.
-- A lightweight evaluation harness (`main.py:192`) that reports JSON validity,
+- A lightweight evaluation harness (`main.py:297`) that reports JSON validity,
   event-type accuracy, and BLEU on curated scenarios.
 
 The complete Google Colab notebook used during development is available at
