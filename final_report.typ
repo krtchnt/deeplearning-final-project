@@ -118,10 +118,8 @@ Metrics:
   columns: 3,
   inset: 8pt,
   stroke: 0.5pt,
-  [
-    *Metric*, *Score*,
-    *Notes*
-  ],
+  table.header([*Metric*], [*Score*], [*Notes*]),
+
   [
     JSON validity, 100.00%, All outputs parsed with zero retries.
   ],
