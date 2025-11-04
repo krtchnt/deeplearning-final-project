@@ -1,5 +1,11 @@
 # Event-Structured Story Continuation with JSON-Constrained LLM
 
+> [!IMPORTANT]
+> This project is developed under the **01204466 Deep Learning** course of **Department of Computer Engineering**,
+  **Faculity of Engineering**, **Kasetsart University**.
+
+> **Project Developers**: *Kritchanat Thanapiphatsiri (6610501955)*
+
 This project builds an interactive storytelling assistant that predicts the next narrative beat for a romance roleplay between two characters, Sparkle and Caelus. A quantized Qwen2.5-1.5B-Instruct model generates the continuation while a JSON schema enforces structural constraints so downstream systems can reason about narration, dialogue, thoughts, and imagined scenarios.
 
 ## Why Deep Learning?
