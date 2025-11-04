@@ -65,14 +65,30 @@ transformer with rotary positional embeddings and RMSNorm. We quantize it to
 4-bit `nf4` weights via bitsandbytes to run efficiently on consumer GPUs.
 
 #figure(caption: [Model architecture overview], [
-  #block[
-    ┌────────────────┐ ┌──────────┐ ┌──────────────────────────┐
-    ┌─────────────────┐ ┌───────────────┐\
-    │ Context Thread │→→│ Tokenizer │→→│ Qwen2.5-1.5B Transformer │→→│ JSON
-    Schema Gate │→→│ Event Objects │\
-    └────────────────┘ └──────────┘ └──────────────────────────┘
-    └─────────────────┘ └───────────────┘
-  ]
+  #let stage(label) = block(
+    stroke: 0.8pt + rgb("#CBD5E0"),
+    fill: rgb("#F7FAFC"),
+    radius: 6pt,
+    inset: 12pt,
+    align(center, text(label, weight: "semibold")),
+  )
+  #let arrow = text(sym.arrow.b.double, size: 16pt)
+  #align(center, [
+    #stack(
+      spacing: 12pt,
+      linebreak(),
+      stage("Context Thread"),
+      arrow,
+      stage("Tokenizer"),
+      arrow,
+      stage("Qwen2.5-1.5B Transformer"),
+      arrow,
+      stage("JSON Schema Gate"),
+      arrow,
+      stage("Event Objects"),
+      linebreak(),
+    )
+  ])
 ])
 
 == System Implementation
